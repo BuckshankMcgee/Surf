@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_759125ef9c19186397c39d20d3624c3f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 150px; height: 160px; 
+     background-color: white; z-index:9999; font-size:14px;
+     border:2px solid grey; padding: 10px;">
+<b>Legend</b><br>
+🟢 ~1m Waves<br>
+🟠 ~1.5m Waves<br>
+🔴 Over 1.5m Waves<br>
+🔵 Less than 0.5m Waves
+</div>
+    
+<h3 align="center" style="font-size:20px"><b>Goderich Weekend Surf Forecast</b></h3>
+    
+            <div class="folium-map" id="map_759125ef9c19186397c39d20d3624c3f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_759125ef9c19186397c39d20d3624c3f = L.map(
+                "map_759125ef9c19186397c39d20d3624c3f",
+                {
+                    center: [43.742, -81.7136],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_556e6cd7a9ab3ed04aa0708ab052864c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_556e6cd7a9ab3ed04aa0708ab052864c.addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var marker_785b7575ed3c9d552379f7f87a3e965c = L.marker(
+                [43.742, -81.7136],
+                {
+}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var icon_ef7a98f6be29ae15f5b1922455d378c3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1eb7fac656ea4760fcc43a3627f3d5f9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_713e79c28143f0cd34160b403b9e47f4 = $(`<div id="html_713e79c28143f0cd34160b403b9e47f4" style="width: 100.0%; height: 100.0%;"><b>Time:</b> 2025-10-03T15:00:00+00:00<br><b>Wave Height:</b> 1.6 m<br><b>Wind Speed:</b> 19 km/h<br><b>Wind Direction:</b> 289°<br><b>Air Temp:</b> 18 °C</div>`)[0];
+                popup_1eb7fac656ea4760fcc43a3627f3d5f9.setContent(html_713e79c28143f0cd34160b403b9e47f4);
+            
+        
+
+        marker_785b7575ed3c9d552379f7f87a3e965c.bindPopup(popup_1eb7fac656ea4760fcc43a3627f3d5f9)
+        ;
+
+        
+    
+    
+                marker_785b7575ed3c9d552379f7f87a3e965c.setIcon(icon_ef7a98f6be29ae15f5b1922455d378c3);
+            
+    
+            var poly_line_f6c1aca0523c646a3e1f0e2f256fc081 = L.polyline(
+                [[43.742, -81.7136], [43.77292897467343, -81.80342426468194]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var marker_ca4f884338d1f1776cf270618c0dfa64 = L.marker(
+                [43.742, -81.7136],
+                {
+}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var icon_3f374e260e040f52f98cc2eec895a994 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b5aa5ae8bc3c52153d073a9e679da184 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e478b0129bcad3799db363e3600ad659 = $(`<div id="html_e478b0129bcad3799db363e3600ad659" style="width: 100.0%; height: 100.0%;"><b>Time:</b> 2025-10-03T16:00:00+00:00<br><b>Wave Height:</b> 1.97 m<br><b>Wind Speed:</b> 24 km/h<br><b>Wind Direction:</b> 306°<br><b>Air Temp:</b> 19 °C</div>`)[0];
+                popup_b5aa5ae8bc3c52153d073a9e679da184.setContent(html_e478b0129bcad3799db363e3600ad659);
+            
+        
+
+        marker_ca4f884338d1f1776cf270618c0dfa64.bindPopup(popup_b5aa5ae8bc3c52153d073a9e679da184)
+        ;
+
+        
+    
+    
+                marker_ca4f884338d1f1776cf270618c0dfa64.setIcon(icon_3f374e260e040f52f98cc2eec895a994);
+            
+    
+            var poly_line_d0ec04161def9ee1ce22f39aa660a09c = L.polyline(
+                [[43.742, -81.7136], [43.80077852522925, -81.79450169943749]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var marker_bcb0e49359412a72b0fb7662eee91f31 = L.marker(
+                [43.742, -81.7136],
+                {
+}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var icon_2a91dc7d3eab20f59022fc99ec67527a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0564b26c4c184cc7f2bae6cf02b9eeb4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b712d704b7f7d92b9264ff17a9297717 = $(`<div id="html_b712d704b7f7d92b9264ff17a9297717" style="width: 100.0%; height: 100.0%;"><b>Time:</b> 2025-10-04T08:00:00+00:00<br><b>Wave Height:</b> 2.38 m<br><b>Wind Speed:</b> 24 km/h<br><b>Wind Direction:</b> 239°<br><b>Air Temp:</b> 23 °C</div>`)[0];
+                popup_0564b26c4c184cc7f2bae6cf02b9eeb4.setContent(html_b712d704b7f7d92b9264ff17a9297717);
+            
+        
+
+        marker_bcb0e49359412a72b0fb7662eee91f31.bindPopup(popup_0564b26c4c184cc7f2bae6cf02b9eeb4)
+        ;
+
+        
+    
+    
+                marker_bcb0e49359412a72b0fb7662eee91f31.setIcon(icon_2a91dc7d3eab20f59022fc99ec67527a);
+            
+    
+            var poly_line_871aa76a66d06f43c9b70f1b9857788b = L.polyline(
+                [[43.742, -81.7136], [43.690496192508995, -81.79931673007022]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var marker_7168893a158157766023cc165864795b = L.marker(
+                [43.742, -81.7136],
+                {
+}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var icon_647fd9be6c893df1f8cc6e6561db7a05 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9ce407b3413e3bf3017c6ac093eedcb0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9cd2c1e9ced22da554d81dd02bfd9efc = $(`<div id="html_9cd2c1e9ced22da554d81dd02bfd9efc" style="width: 100.0%; height: 100.0%;"><b>Time:</b> 2025-10-04T12:00:00+00:00<br><b>Wave Height:</b> 1.96 m<br><b>Wind Speed:</b> 11 km/h<br><b>Wind Direction:</b> 239°<br><b>Air Temp:</b> 24 °C</div>`)[0];
+                popup_9ce407b3413e3bf3017c6ac093eedcb0.setContent(html_9cd2c1e9ced22da554d81dd02bfd9efc);
+            
+        
+
+        marker_7168893a158157766023cc165864795b.bindPopup(popup_9ce407b3413e3bf3017c6ac093eedcb0)
+        ;
+
+        
+    
+    
+                marker_7168893a158157766023cc165864795b.setIcon(icon_647fd9be6c893df1f8cc6e6561db7a05);
+            
+    
+            var poly_line_94c5615d1f1c0c89915c869882bd4a9f = L.polyline(
+                [[43.742, -81.7136], [43.713672905879946, -81.76074420153861]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var marker_b3a53ec9b8a5f939ec2910974d8d0a4e = L.marker(
+                [43.742, -81.7136],
+                {
+}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var icon_c3261a16ae812fa221ecc353a54df9d4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_76342d741cf121d7900619be078f993c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_debffc6aa07d857c520055b8b1ea5779 = $(`<div id="html_debffc6aa07d857c520055b8b1ea5779" style="width: 100.0%; height: 100.0%;"><b>Time:</b> 2025-10-04T14:00:00+00:00<br><b>Wave Height:</b> 1.47 m<br><b>Wind Speed:</b> 12 km/h<br><b>Wind Direction:</b> 263°<br><b>Air Temp:</b> 10 °C</div>`)[0];
+                popup_76342d741cf121d7900619be078f993c.setContent(html_debffc6aa07d857c520055b8b1ea5779);
+            
+        
+
+        marker_b3a53ec9b8a5f939ec2910974d8d0a4e.bindPopup(popup_76342d741cf121d7900619be078f993c)
+        ;
+
+        
+    
+    
+                marker_b3a53ec9b8a5f939ec2910974d8d0a4e.setIcon(icon_c3261a16ae812fa221ecc353a54df9d4);
+            
+    
+            var poly_line_f9d609046d735a2ecedabde4b0df2bc3 = L.polyline(
+                [[43.742, -81.7136], [43.73468783939569, -81.77315276909847]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var marker_39e73ac913e00dc631722d323e8be3b5 = L.marker(
+                [43.742, -81.7136],
+                {
+}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var icon_d188b6fd6bfef72e3d3d09ac241a66c8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2af0bf9bc04fb6199462483e0080428b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bfb2bddfcc9a81dd689d6f0a4f036e23 = $(`<div id="html_bfb2bddfcc9a81dd689d6f0a4f036e23" style="width: 100.0%; height: 100.0%;"><b>Time:</b> 2025-10-04T15:00:00+00:00<br><b>Wave Height:</b> 1.37 m<br><b>Wind Speed:</b> 15 km/h<br><b>Wind Direction:</b> 296°<br><b>Air Temp:</b> 25 °C</div>`)[0];
+                popup_2af0bf9bc04fb6199462483e0080428b.setContent(html_bfb2bddfcc9a81dd689d6f0a4f036e23);
+            
+        
+
+        marker_39e73ac913e00dc631722d323e8be3b5.bindPopup(popup_2af0bf9bc04fb6199462483e0080428b)
+        ;
+
+        
+    
+    
+                marker_39e73ac913e00dc631722d323e8be3b5.setIcon(icon_d188b6fd6bfef72e3d3d09ac241a66c8);
+            
+    
+            var poly_line_a6f202f5b9a87a967d2dbd2f89f22dab = L.polyline(
+                [[43.742, -81.7136], [43.774877836009175, -81.78100955347244]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var marker_b9e5f64b5374d56564dae24e87772611 = L.marker(
+                [43.742, -81.7136],
+                {
+}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var icon_6c7a3daebaed93cfc30b52462af45ef5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1eb8c52480ea2a96a3e1d861c7f54698 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_56597855666732fa79c879ff371eb713 = $(`<div id="html_56597855666732fa79c879ff371eb713" style="width: 100.0%; height: 100.0%;"><b>Time:</b> 2025-10-05T07:00:00+00:00<br><b>Wave Height:</b> 0.63 m<br><b>Wind Speed:</b> 12 km/h<br><b>Wind Direction:</b> 274°<br><b>Air Temp:</b> 10 °C</div>`)[0];
+                popup_1eb8c52480ea2a96a3e1d861c7f54698.setContent(html_56597855666732fa79c879ff371eb713);
+            
+        
+
+        marker_b9e5f64b5374d56564dae24e87772611.bindPopup(popup_1eb8c52480ea2a96a3e1d861c7f54698)
+        ;
+
+        
+    
+    
+                marker_b9e5f64b5374d56564dae24e87772611.setIcon(icon_6c7a3daebaed93cfc30b52462af45ef5);
+            
+    
+            var poly_line_ef02f1cda8e89342b8913dade26b349d = L.polyline(
+                [[43.742, -81.7136], [43.74618538842464, -81.77345384301559]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var marker_298aebd7e6673afc7594245ba592ffbb = L.marker(
+                [43.742, -81.7136],
+                {
+}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var icon_7c3d66d2d18e5bcb6071593bc878bd4b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9636e7f601ab6158c92af23b03c90d5b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_80c89749d4d46d429e599a4e893f984a = $(`<div id="html_80c89749d4d46d429e599a4e893f984a" style="width: 100.0%; height: 100.0%;"><b>Time:</b> 2025-10-05T08:00:00+00:00<br><b>Wave Height:</b> 0.66 m<br><b>Wind Speed:</b> 11 km/h<br><b>Wind Direction:</b> 213°<br><b>Air Temp:</b> 23 °C</div>`)[0];
+                popup_9636e7f601ab6158c92af23b03c90d5b.setContent(html_80c89749d4d46d429e599a4e893f984a);
+            
+        
+
+        marker_298aebd7e6673afc7594245ba592ffbb.bindPopup(popup_9636e7f601ab6158c92af23b03c90d5b)
+        ;
+
+        
+    
+    
+                marker_298aebd7e6673afc7594245ba592ffbb.setIcon(icon_7c3d66d2d18e5bcb6071593bc878bd4b);
+            
+    
+            var poly_line_4ac2bdd2227593423d5a252ba31abb4a = L.polyline(
+                [[43.742, -81.7136], [43.695873118763, -81.74355514692583]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var marker_51762f29972e3e908b5f7ef6c48ee82f = L.marker(
+                [43.742, -81.7136],
+                {
+}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var icon_3eb36be857b1101a1d06389366b18e1a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a42d84b02218becc01a7bcad5c5ffee3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0a1884316ad8c0c7594e48e505bdb87d = $(`<div id="html_0a1884316ad8c0c7594e48e505bdb87d" style="width: 100.0%; height: 100.0%;"><b>Time:</b> 2025-10-05T15:00:00+00:00<br><b>Wave Height:</b> 1.17 m<br><b>Wind Speed:</b> 21 km/h<br><b>Wind Direction:</b> 201°<br><b>Air Temp:</b> 24 °C</div>`)[0];
+                popup_a42d84b02218becc01a7bcad5c5ffee3.setContent(html_0a1884316ad8c0c7594e48e505bdb87d);
+            
+        
+
+        marker_51762f29972e3e908b5f7ef6c48ee82f.bindPopup(popup_a42d84b02218becc01a7bcad5c5ffee3)
+        ;
+
+        
+    
+    
+                marker_51762f29972e3e908b5f7ef6c48ee82f.setIcon(icon_3eb36be857b1101a1d06389366b18e1a);
+            
+    
+            var poly_line_2d28b3d4edede76724767c2a3b241820 = L.polyline(
+                [[43.742, -81.7136], [43.64864195735028, -81.74943679495453]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var marker_33afb0b70a13ce6eaf7d6bcaa8795ec0 = L.marker(
+                [43.742, -81.7136],
+                {
+}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+    
+            var icon_f3537441a24389f5257acad9c5fb8999 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_67c58a6e44880fb7ee4210c5641372ec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4faf6331c2c5f1d6daca2207cb079fa4 = $(`<div id="html_4faf6331c2c5f1d6daca2207cb079fa4" style="width: 100.0%; height: 100.0%;"><b>Time:</b> 2025-10-05T17:00:00+00:00<br><b>Wave Height:</b> 0.46 m<br><b>Wind Speed:</b> 29 km/h<br><b>Wind Direction:</b> 234°<br><b>Air Temp:</b> 23 °C</div>`)[0];
+                popup_67c58a6e44880fb7ee4210c5641372ec.setContent(html_4faf6331c2c5f1d6daca2207cb079fa4);
+            
+        
+
+        marker_33afb0b70a13ce6eaf7d6bcaa8795ec0.bindPopup(popup_67c58a6e44880fb7ee4210c5641372ec)
+        ;
+
+        
+    
+    
+                marker_33afb0b70a13ce6eaf7d6bcaa8795ec0.setIcon(icon_f3537441a24389f5257acad9c5fb8999);
+            
+    
+            var poly_line_e23476f486cbfc6600fe0e28f3155444 = L.polyline(
+                [[43.742, -81.7136], [43.68322147477075, -81.79450169943749]],
+                {"bubblingMouseEvents": true, "color": "lightgray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "lightgray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_759125ef9c19186397c39d20d3624c3f);
+        
+</script>
+</html>
